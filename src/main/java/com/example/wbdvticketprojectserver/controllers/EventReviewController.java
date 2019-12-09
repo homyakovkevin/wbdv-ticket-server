@@ -6,8 +6,10 @@ import com.example.wbdvticketprojectserver.models.Listing;
 import com.example.wbdvticketprojectserver.repositories.EventRepository;
 import com.example.wbdvticketprojectserver.repositories.EventReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -34,5 +36,10 @@ public class EventReviewController {
     @GetMapping("/api/events/{eventId}/reviews")
     public List<EventReview> findAllReviewsForEvent(@PathVariable("eventId") long eventId) {
         return eventReviewRepository.findAllReviewsForEvent(eventId);
+    }
+
+    @GetMapping("/api/reviews/last={last}")
+    public List<EventReview> findLastReviews(@PathVariable("last") int last) {
+        return eventReviewRepository.findLastReviews(PageRequest.of(0, last));
     }
 }

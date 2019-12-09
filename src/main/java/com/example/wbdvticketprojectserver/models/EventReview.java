@@ -3,6 +3,7 @@ package com.example.wbdvticketprojectserver.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class EventReview {
