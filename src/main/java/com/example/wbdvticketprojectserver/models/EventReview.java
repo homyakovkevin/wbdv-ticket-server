@@ -16,8 +16,9 @@ public class EventReview {
     @JsonIgnore
     private Event event;
 
+
+    //@JsonIgnore
     @ManyToOne
-    @JsonIgnore
     private User user;
 
     private String review;
