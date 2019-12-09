@@ -11,6 +11,9 @@ import java.util.List;
 public interface EventReviewRepository
         extends CrudRepository<EventReview, Integer> {
 
+    @Query("select eventReview from EventReview eventReview where eventReview.id = :id")
+    EventReview findEventReviewById(@Param("id") int id);
+
     @Query("select eventReview from EventReview eventReview where eventReview.event.id = :eid")
     List<EventReview> findAllReviewsForEvent(@Param("eid") long eId);
 

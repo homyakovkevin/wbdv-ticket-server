@@ -82,17 +82,18 @@ public class UserController {
     }
 
     @PutMapping ("/api/users/{username}/reviews/{reviewId}")
-    public List<EventReview> deleteReviewForUser
+    public List<EventReview> updateReviewForUser
             (@PathVariable("username") String username,
              @PathVariable("reviewId") Integer reviewId,
              @RequestBody EventReview review){
         User u = repository.findUserByUsername(username);
-        Optional<EventReview> r = eventReviewRepository.findById(reviewId);
-        if (r.isPresent()) {
-            EventReview er = r.get();
-            er.setReview(review.getReview());
-            eventReviewRepository.save(er);
-        }
+        EventReview r = eventReviewRepository.findEventReviewById(reviewId);
+        r.setReview(review.getReview());
+        eventReviewRepository.save(r);
+//        if (r != null) {
+//            r.setReview(review.getReview());
+//            eventReviewRepository.save(r);
+//        }
         return u.getReviews();
     }
 
@@ -101,10 +102,8 @@ public class UserController {
             (@PathVariable("username") String username,
              @PathVariable("reviewId") Integer reviewId){
         User u = repository.findUserByUsername(username);
-        Optional<EventReview> r = eventReviewRepository.findById(reviewId);
-
-        u.getReviews().remove(r);
-        repository.save(u);
+        EventReview r = eventReviewRepository.findEventReviewById(reviewId);
+        eventReviewRepository.delete(r);
         return u.getReviews();
     }
 
