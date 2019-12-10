@@ -8,13 +8,13 @@ DELETE /api/users/{username}
 
 POST /api/users
 body:
-{
-	"username": "george@gmail.com",
-	"password": "12345",
-	"firstName": "George",
-	"lastName": "Khomchenko",
-	"type": "admin"
-}
+    {
+        "username": "george@gmail.com",
+        "password": "12345",
+        "firstName": "George",
+        "lastName": "Khomchenko",
+        "type": "admin"
+    }
 
 GET /api/users
 
