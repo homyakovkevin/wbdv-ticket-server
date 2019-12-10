@@ -22,7 +22,7 @@ PUT /api/users/{username}
 
 POST /api/users/{username}/events/{eId}
 
-##### Important: Both user and event have to be posted before (for event post see below)
+#### Important: Both user and event have to be posted before (for event post see below)
 
 DELETE /api/users/{username}/events/{eId}
 
